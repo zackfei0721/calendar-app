@@ -5,6 +5,7 @@ import './Calendar.css';
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(null);
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -14,6 +15,7 @@ const Calendar = () => {
 
     const handleDateClick = (day) => {
         console.log(new Date(currentDate.getFullYear(), currentDate.getMonth(), day));
+        setSelectedDate(day);
     }
 
     const handlePrevMonth = () => {
@@ -21,7 +23,7 @@ const Calendar = () => {
     }
 
     const handleNextMonth = () => {
-        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 2, 0));
+        setCurrentDate(new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1));
     }
 
     const daysInMonth = getDaysInMonth(currentDate.getMonth() + 1, currentDate.getFullYear());
@@ -45,7 +47,13 @@ const Calendar = () => {
                     <div className='calendar-cell' key={`empty-${index}`}></div>
                 ))}
                 {dates.map((date) => (
-                    <div className='calendar-cell' key={date} onClick={() => handleDateClick(date)}>{date}</div>
+                    <div 
+                    className={`calendar-cell ${date === selectedDate ? 'selected-date' : ''}`} 
+                    key={date} 
+                    onClick={() => handleDateClick(date)}
+                >
+                    {date}
+                </div>
                 ))}
             </div>
         </div>

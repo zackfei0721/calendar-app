@@ -24,6 +24,10 @@
 }
 
 .calendar-cell:hover {
-    background-color: #f0f0f0;
+    background-color: #FDFD96;
     cursor: pointer;
+}
+
+.selected-date {
+    background-color: #FDFD96;
 }
