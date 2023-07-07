@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import './Calendar.css';
+
+
 
 const Calendar = () => {
     const [currentDate, setCurrentDate] = useState(new Date());
@@ -31,18 +34,18 @@ const Calendar = () => {
 
     return (
         <div>
-            <h2>US Calendar for {months[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
+            <h1>US Calendar for {months[currentDate.getMonth()]} {currentDate.getFullYear()}</h1>
             <button onClick={handlePrevMonth}>Prev</button>
             <button onClick={handleNextMonth}>Next</button>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)'}}>
+            <div className="calendar-container">
                 {days.map((day) => (
-                    <div key={day}>{day}</div>
+                    <div className="calendar-cell calendar-day" key={day}>{day}</div>
                 ))}
                 {Array(startDayofWeek).fill(null).map((_, index) => (
-                    <div key={`empty-${index}`}></div>
+                    <div className='calendar-cell' key={`empty-${index}`}></div>
                 ))}
                 {dates.map((date) => (
-                    <div key={date} onClick={() => handleDateClick(date)}>{date}</div>
+                    <div className='calendar-cell' key={date} onClick={() => handleDateClick(date)}>{date}</div>
                 ))}
             </div>
         </div>

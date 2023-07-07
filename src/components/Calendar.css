@@ -1,0 +1,29 @@
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+
+.calendar-cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-day {
+    font-size: 20px;
+    background-color: #f0f0f0;
+}
+
+.calendar-cell:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
